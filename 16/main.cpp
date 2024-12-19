@@ -181,8 +181,13 @@ void maze_t::print(const char* filepath) const
 {
     std::ostringstream oss;
     oss << "Dimensions: " << size.x << " x " << size.y << std::endl;
-    oss << "Solved in: " << solve_time << " ms. Search count: " << search_count << std::endl;
     oss << "Best path cost " << path_cost << " points" << std::endl;
+    oss << "Solved in: " << solve_time << " ms. Search count: " << search_count;
+#if DEBUG_BUILD
+    oss << " (debug build)" << std::endl;
+#else
+    oss << " (release build)" << std::endl;
+#endif
 
     // Short output for console
     std::cout << oss.str();
